@@ -1,1 +1,1 @@
-["redis-brain.coffee", "tweet.coffee", "shipit.coffee","janky.coffee", "ackbar.coffee", "github-credentials.coffee", "github-pulls.coffee", "github-activity.coffee", "github-commiters.coffee", "heroku-status.coffee", "oauth.coffee", "pivotal.coffee", "janky.coffee"]
+["redis-brain.coffee", "tweet.coffee", "shipit.coffee","janky.coffee", "ackbar.coffee", "github-credentials.coffee", "oauth.coffee", "janky.coffee"]
