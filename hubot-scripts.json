@@ -1,1 +1,1 @@
-["redis-brain.coffee", "tweet.coffee", "shipit.coffee","ackbar.coffee", "github-credentials.coffee", "oauth.coffee"]
+["redis-brain.coffee", "tweet.coffee", "shipit.coffee","ackbar.coffee", "github-credentials.coffee", "oauth.coffee", "google.coffee"]
