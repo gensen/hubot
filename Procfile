@@ -1,1 +1,1 @@
-app: bin/hubot -a campfire -n liz
+app: bin/hubot -a campfire -n Hubot

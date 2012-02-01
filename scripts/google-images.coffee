@@ -17,8 +17,6 @@ module.exports = (robot) ->
       msg.send url
 
   robot.respond /(?:mo?u)?sta(?:s|c)he?(?: me)? (.*)/i, (msg) ->
-    type = Math.floor(Math.random() * 3)
-    mustachify = "http://mustachify.me/#{type}?src="
     imagery = msg.match[1]
 
     if imagery.match /^https?:\/\//i
@@ -27,13 +25,14 @@ module.exports = (robot) ->
       imageMe msg, imagery, (url) ->
         msg.send "#{mustachify}#{url}"
 
+mustachify = "http://mustachify.me/?src="
+
 imageMe = (msg, query, cb) ->
   msg.http('http://ajax.googleapis.com/ajax/services/search/images')
     .query(v: "1.0", rsz: '8', q: query)
     .get() (err, res, body) ->
       images = JSON.parse(body)
       images = images.responseData.results
-      if images.length > 0
-        image  = msg.random images
-        cb "#{image.unescapedUrl}#.png"
+      image  = msg.random images
+      cb "#{image.unescapedUrl}#.png"
 
