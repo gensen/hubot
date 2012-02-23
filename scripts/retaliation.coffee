@@ -6,7 +6,7 @@
 # kill <person> - Shoots that person
 module.exports = (robot) ->
   robot.respond /kill (.*)/i, (message) ->
-    URL = "#{process.env.HUBOT_RETALIATION_HOST}"
+    HOST = "#{process.env.HUBOT_RETALIATION_HOST}"
     PORT = "#{process.env.HUBOT_RETALIATION_PORT}"
     dgram = require('dgram')
     util = require('util')
