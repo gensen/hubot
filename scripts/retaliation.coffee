@@ -10,7 +10,8 @@ module.exports = (robot) ->
     PORT = "#{process.env.HUBOT_RETALIATION_PORT}"
     dgram = require('dgram')
     util = require('util')
-    buffer = new Buffer(util.format('%j', {"victim": message}))
+    victim = { "victim": message }
+    buffer = new Buffer(JSON.stringify(victim))
     client = dgram.createSocket("udp4")
     client.send(buffer, 0, buffer.length, PORT, HOST, (err, bytes) ->
       client.close()
