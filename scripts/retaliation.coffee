@@ -17,4 +17,5 @@ module.exports = (robot) ->
     client = dgram.createSocket("udp4")
     client.send(buffer, 0, buffer.length, PORT, HOST, (err, bytes) ->
       client.close()
+    )
     msg.send "Target annihilated"
