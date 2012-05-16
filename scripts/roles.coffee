@@ -13,7 +13,7 @@ module.exports = (robot) ->
   getAmbiguousUserText = (users) ->
     "Be more specific, I know #{users.length} people named like that: #{(user.name for user in users).join(", ")}"
 
-  robot.respond /who is ([\w .-]+)\?*$/i, (msg) ->
+  robot.respond /who is @?([\w .-]+)\?*$/i, (msg) ->
     name = msg.match[1]
 
     if name is "you"
@@ -34,11 +34,11 @@ module.exports = (robot) ->
       else
         msg.send "#{name}? Never heard of 'em"
 
-  robot.respond /([\w .-_]+) is (["'\w: -_]+)[.!]*$/i, (msg) ->
-    name    = msg.match[1]
+  robot.respond /@?([\w .-_]+) is (["'\w: -_]+)[.!]*$/i, (msg) ->
+    name    = msg.match[1].trim()
     newRole = msg.match[2].trim()
 
-    unless name in ['who', 'what', 'where', 'when', 'why']
+    unless name in ['', 'who', 'what', 'where', 'when', 'why']
       unless newRole.match(/^not\s+/i)
         users = robot.usersForFuzzyName(name)
         if users.length is 1
@@ -58,11 +58,11 @@ module.exports = (robot) ->
         else
           msg.send "I don't know anything about #{name}."
 
-  robot.respond /([\w .-_]+) is not (["'\w: -_]+)[.!]*$/i, (msg) ->
-    name    = msg.match[1]
+  robot.respond /@?([\w .-_]+) is not (["'\w: -_]+)[.!]*$/i, (msg) ->
+    name    = msg.match[1].trim()
     newRole = msg.match[2].trim()
 
-    unless name in ['who', 'what', 'where', 'when', 'why']
+    unless name in ['', 'who', 'what', 'where', 'when', 'why']
       users = robot.usersForFuzzyName(name)
       if users.length is 1
         user = users[0]
