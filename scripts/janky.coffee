@@ -62,7 +62,7 @@ module.exports = (robot) ->
       else
         msg.reply "can't help you right now."
 
-  robot.respond /ci build ([-_\.0-9a-zA-Z]+)(\/([-_\.a-zA-z0-9]+))?/i, (msg) ->
+  robot.respond /ci build ([-_\.0-9a-zA-Z]+)(\/([-_\.a-zA-z0-9\/]+))?/i, (msg) ->
     app     = msg.match[1]
     branch  = msg.match[3] || "master"
     room_id = msg.message.user.room
@@ -85,7 +85,7 @@ module.exports = (robot) ->
       if statusCode == 201
         msg.reply body
       else
-        msg.reply body
+        msg.reply "Error F7U12: Can't Setup."
 
   robot.respond /ci toggle ([-_\.0-9a-zA-Z]+)/i, (msg) ->
     app    = msg.match[1]
@@ -120,7 +120,7 @@ module.exports = (robot) ->
       else
         msg.send("who knows")
 
-  robot.respond /ci status (-v )?([-_\.0-9a-zA-Z]+)(\/([-_\.a-zA-z0-9]+))?/i, (msg) ->
+  robot.respond /ci status (-v )?([-_\.0-9a-zA-Z]+)(\/([-_\.a-zA-z0-9\/]+))?/i, (msg) ->
     app    = msg.match[2]
     count  = 5
     branch = msg.match[4] || 'master'
